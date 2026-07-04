@@ -1,0 +1,20 @@
+# RuntimeOS
+
+RuntimeOS is a modular firmware platform for embedded devices.
+
+It provides operating-system-like services that allow hardware capabilities to be exposed through standardized services and consumed by plugins.
+
+The first supported platform is ESP32-WROOM-32D using ESP-IDF.
+
+## Current Status
+
+Early development.
+
+Current milestone:
+- WiFi Access Point
+- Embedded Web UI
+- Placeholder Dashboard
+
+## Documentation
+
+See the `docs` directory.
