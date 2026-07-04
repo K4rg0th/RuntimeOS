@@ -100,7 +100,27 @@ Examples
 - UART
 - Battery
 
-Capabilities are NOT features.
+## Capability Model v0.1 (Documentation-only)
+
+The RuntimeOS capability model v0.1 is documentation-only for now.
+
+A capability is working runtime functionality exposed by RuntimeOS, not hardware discovery or placeholder architecture.
+
+Static capability declarations may be used in the future, but are not implemented yet.
+
+Current real capabilities are:
+- wifi.ap
+- management.http
+- management.web_ui
+
+Placeholder components that must not be declared as capabilities:
+- HAL
+- StorageManager
+- PowerManager
+- PluginManager
+- RESTAPI
+
+CapabilityRegistry should be implemented only when there is a real consumer such as Web UI, API, or plugin/module system.
 
 ---
 
