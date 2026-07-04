@@ -12,6 +12,23 @@ The Runtime should remain generic enough to support any embedded application bas
 
 ---
 
+## Architecture status
+
+The architecture described in this document represents the intended RuntimeOS design direction.
+
+Not every layer exists as code yet.
+
+RuntimeOS development follows an incremental approach:
+
+1. Implement the smallest working runtime.
+2. Extract real abstractions only when required.
+3. Keep hardware-specific code isolated.
+4. Avoid placeholder architecture with empty managers/classes.
+
+A documented component does not mean the component already exists.
+
+Current implementation status must always be verified from the source tree.
+
 # Design Goals
 
 - Plug & Play
@@ -32,6 +49,10 @@ Hardware
 ↓
 
 Board Support Package (BSP)
+
+↓
+
+Hardware Discovery
 
 ↓
 
@@ -212,3 +233,42 @@ Placeholder Dashboard
 Placeholder Navigation
 
 Nothing else.
+
+## Hardware Agnostic Philosophy
+
+RuntimeOS does not aim to include every possible hardware driver inside the firmware.
+
+The core firmware must remain minimal and portable.
+
+RuntimeOS provides:
+
+- hardware capability discovery
+- bus scanning
+- device identification when possible
+- standardized service interfaces
+- dynamic extension through drivers and plugins
+
+A device does not need to be fully supported at boot time.
+
+The expected flow is:
+
+1. Detect available hardware interfaces
+2. Identify connected devices when possible
+3. Expose known capabilities automatically
+4. Request or load additional drivers when required
+
+Drivers may come from:
+
+- built-in minimal support
+- user uploaded packages
+- removable storage
+- network download when available
+- custom development
+
+The goal is not:
+
+"Firmware containing every driver"
+
+The goal is:
+
+"A small runtime capable of understanding its environment and expanding itself."

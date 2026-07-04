@@ -18,11 +18,12 @@ The hardware should never dictate the architecture.
 
 ---
 
-One firmware.
+One Runtime architecture.
 
-Never multiple firmware builds.
+Avoid fragmented device-specific firmware forks.
 
-If different hardware requires different behavior, solve it through BSPs, drivers or runtime detection.
+Different hardware targets may require different builds, BSPs, and feature profiles, but they must expose the same RuntimeOS concepts and APIs.
+
 
 ---
 
@@ -130,3 +131,42 @@ A clean architecture is more valuable than adding one more feature.
 Long-term vision.
 
 RuntimeOS should become a reusable embedded runtime platform capable of running on multiple hardware families while preserving the same user experience.
+
+## Hardware Agnostic Philosophy
+
+RuntimeOS does not aim to include every possible hardware driver inside the firmware.
+
+The core firmware must remain minimal and portable.
+
+RuntimeOS provides:
+
+- hardware capability discovery
+- bus scanning
+- device identification when possible
+- standardized service interfaces
+- dynamic extension through drivers and plugins
+
+A device does not need to be fully supported at boot time.
+
+The expected flow is:
+
+1. Detect available hardware interfaces
+2. Identify connected devices when possible
+3. Expose known capabilities automatically
+4. Request or load additional drivers when required
+
+Drivers may come from:
+
+- built-in minimal support
+- user uploaded packages
+- removable storage
+- network download when available
+- custom development
+
+The goal is not:
+
+"Firmware containing every driver"
+
+The goal is:
+
+"A small runtime capable of understanding its environment and expanding itself."

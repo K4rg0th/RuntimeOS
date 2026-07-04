@@ -9,6 +9,7 @@ public:
     void init();
     void init(const char* dir, const char** files);
     void loop();
+    const char* getDashboardHtml();
 };
 
 #endif // WEB_UI_H

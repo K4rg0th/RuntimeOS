@@ -28,15 +28,22 @@ WiFi Plugin
 
 ## v0.5
 
-CC1101
+External Hardware Support
+
+- Driver loading
+- Device discovery
+- Module registry
+
 
 ## v0.6
 
-NRF24
+Hardware Modules
 
-## v0.7
-
-PN532
+Initial modules:
+- Radio modules
+- Storage modules
+- Display modules
+- Input modules
 
 ## v0.8
 

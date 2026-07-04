@@ -1,10 +1,21 @@
 # Architectural Decisions
 
+## Decision: Framework independence
+
+RuntimeOS must not depend on a specific vendor SDK.
+
+ESP32 + Arduino is the first reference implementation because it allows fast prototyping.
+
+Hardware-specific SDKs such as ESP-IDF may be used inside BSP implementations,
+but the RuntimeOS core should remain framework-independent.
+
 ## Firmware
 
-Only one firmware image.
+One Runtime architecture.
 
-Never create multiple builds for different hardware.
+Avoid fragmented device-specific firmware forks.
+
+Different hardware targets may require different builds, BSPs, and feature profiles, but they must expose the same RuntimeOS concepts and APIs.
 
 ---
 
@@ -59,3 +70,24 @@ Mobile first.
 RuntimeOS is a runtime platform.
 
 Not a pentesting firmware.
+
+
+## Decision: Minimal Core and Dynamic Hardware Support
+
+RuntimeOS does not include every possible hardware driver in the base firmware.
+
+The core provides:
+- bus discovery
+- capability detection
+- service interfaces
+- driver loading mechanisms
+
+Hardware-specific support is provided through:
+- BSPs
+- optional drivers
+- user-installed modules
+- downloadable packages when connectivity exists
+
+The goal is not a firmware containing every driver.
+
+The goal is a runtime capable of understanding and extending itself.
