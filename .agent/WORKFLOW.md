@@ -139,3 +139,38 @@ Never commit:
 
 Never invent user identity, ownership data, credentials, emails, usernames, or authorship information.
 When Git identity is missing, stop and ask the user for proper configuration.
+
+## Development environment
+
+Current development setup:
+
+- Host OS: Windows
+- IDE: VS Code
+- AI coding assistant: Cline
+- Build system: PlatformIO
+- Current target: ESP32-WROOM-32D connected locally
+
+Command execution guidelines:
+
+- Assume Windows environment unless explicitly stated otherwise.
+- Prefer PowerShell-compatible commands.
+- Do not assume Unix/Linux shell utilities exist.
+
+Avoid commands like:
+- find
+- grep
+- ls
+- rm
+- cp
+- mv
+
+Prefer:
+- Get-ChildItem instead of find/ls
+- Select-String instead of grep
+- Remove-Item instead of rm
+- Copy-Item instead of cp
+- Move-Item instead of mv
+
+For repository operations:
+- Git commands are allowed normally.
+- PlatformIO commands are allowed normally.
